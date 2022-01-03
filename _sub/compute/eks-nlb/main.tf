@@ -4,6 +4,8 @@ resource "aws_lb" "nlb" {
   internal           = false #tfsec:ignore:aws-elbv2-alb-not-public
   load_balancer_type = "network"
   subnets            = var.subnet_ids
+
+  drop_invalid_header_fields = true
 }
 
 resource "aws_autoscaling_attachment" "nlb" {
